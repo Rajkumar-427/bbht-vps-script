@@ -54,3 +54,68 @@ fi
 mkdir ~/tools
 cd ~/tools
 
+# install subfinder
+echo "installing subfinder"
+GO111MODULE=on
+go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
+echo"done"
+
+# install assetfinder
+echo "installing assetfinder"
+go get -u github.com/tomnomnom/assetfinder
+echo"done"
+
+# install amass
+echo"installing amass"
+GO111MODULE=on 
+go get -v github.com/OWASP/Amass/v3/...
+echo"done"
+
+# install github-subdomains
+echo "installing github-subdomains"
+go get -u github.com/gwen001/github-subdomains
+echo"done"
+
+# install shuffledns
+echo"installing shuffledns"
+GO111MODULE=on 
+go get -v github.com/projectdiscovery/shuffledns/cmd/shuffledns
+echo"done"
+
+#install httpx
+echo"installing httpx"
+GO111MODULE=on 
+go get -v github.com/projectdiscovery/httpx/cmd/httpx
+echo"done"
+
+#install aquatone
+echo"installing aquatone"
+wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
+mkdir aquatone
+mv aquatone_linux_amd64_1.7.0.zip ~/tools/aquatone
+unzip aquatone_linux_amd64_1.7.0.zip 
+sudo mv aquatone /usr/local/go/bin
+sudo rm -r aquatone_linux_amd64_1.7.0.zip
+sudo rm -r ~/tools/aquatone
+
+#install nuclei
+echo"installing nuclei"
+GO111MODULE=on 
+go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei 
+echo"done"
+
+#install waybackurls
+echo"installing waybackurls"
+go get github.com/tomnomnom/waybackurls
+echo"done"
+
+#install gf and gf patterns
+echo "installing gf & gf patterns"
+go get -u github.com/tomnomnom/gf
+echo 'source $GOPATH/src/github.com/tomnomnom/gf/gf-completion.bash' >> ~/.bashrc
+mkdir ~/.gf
+sudo cp -r $GOPATH/src/github.com/tomnomnom/gf/examples ~/.gf
+git clone https://github.com/1ndianl33t/Gf-Patterns
+mv ~/tools/Gf-Patterns/*.json ~/.gf
+sudo rm -r ~/tools/Gf-Patterns
+
