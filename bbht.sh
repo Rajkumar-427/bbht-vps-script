@@ -36,7 +36,8 @@ sudo tar -xvf go1.16.linux-amd64.tar.gz
 					export GOPATH=$HOME/go
 					export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 					echo 'export GOROOT=/usr/local/go' >> ~/.bash_profile
-					echo 'export GOPATH=$HOME/go'	>> ~/.bash_profile		echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.bash_profile	
+					echo 'export GOPATH=$HOME/go'	>> ~/.bash_profile		
+					echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.bash_profile	
 					source ~/.bash_profile
 					sleep 1
 					break
