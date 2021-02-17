@@ -114,7 +114,7 @@ echo "installing gf & gf patterns"
 go get -u github.com/tomnomnom/gf
 echo 'source $GOPATH/src/github.com/tomnomnom/gf/gf-completion.bash' >> ~/.bashrc
 mkdir ~/.gf
-sudo cp -r $GOPATH/src/github.com/tomnomnom/gf/examples ~/.gf
+sudo cp -r $GOPATH/src/github.com/tomnomnom/gf/examples/*.json ~/.gf
 git clone https://github.com/1ndianl33t/Gf-Patterns
 mv ~/tools/Gf-Patterns/*.json ~/.gf
 sudo rm -r ~/tools/Gf-Patterns
