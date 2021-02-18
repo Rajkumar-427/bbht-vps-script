@@ -17,39 +17,20 @@ sudo apt-get install -y python-dnspython
 sudo apt-get install -y git
 sudo apt-get install -y rename
 sudo apt-get install -y xargs
-
-
 #install go
-if [[ -z "$GOPATH" ]];then
-echo "It looks like go is not installed, would you like to install it now"
-PS3="Please select an option : "
-choices=("yes" "no")
-select choice in "${choices[@]}"; do
-        case $choice in
-                yes)
-                echo "installing golang in vps"
 
 wget https://golang.org/dl/go1.16.linux-amd64.tar.gz
 sudo tar -xvf go1.16.linux-amd64.tar.gz
-					sudo mv go /usr/local
-					export GOROOT=/usr/local/go
-					export GOPATH=$HOME/go
-					export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-					echo 'export GOROOT=/usr/local/go' >> ~/.bash_profile
-					echo 'export GOPATH=$HOME/go'	>> ~/.bash_profile		
-					echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.bash_profile	
-					source ~/.bash_profile
-					sleep 1
-					break
-					;;
-					no)
-					echo "Please install go and rerun this script"
-					echo "Aborting installation..."
-					exit 1
-					;;
-	esac	
-done
-fi
+sudo rm -r go1.16.linux-amd64.tar.gz
+                                        sudo mv go /usr/local
+                                        cp -r /usr/local/go /usr/bin/go
+                                        export GOROOT=/usr/local/go
+                                        export GOPATH=$HOME/go
+                                        export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+                                        echo 'export GOROOT=/usr/local/go' >> ~/.bashrc
+                                        echo 'export GOPATH=$HOME/go'   >> ~/.bashrc            
+                                        echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.bashrc   
+                                        source ~/.bashrc
 
 mkdir ~/tools
 cd ~/tools
@@ -57,52 +38,53 @@ cd ~/tools
 # install subfinder
 echo "installing subfinder"
 go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
-echo"done"
+echo "done"
 
 # install assetfinder
 echo "installing assetfinder"
 go get -u github.com/tomnomnom/assetfinder
-echo"done"
+echo "done"
 
 # install amass
-echo"installing amass"
+echo "installing amass"
 go get -v github.com/OWASP/Amass/v3/...
-echo"done"
+echo "done"
 
 # install github-subdomains
 echo "installing github-subdomains"
 go get -u github.com/gwen001/github-subdomains
-echo"done"
+echo "done"
 
 # install shuffledns
-echo"installing shuffledns"
+echo "installing shuffledns"
 go get -v github.com/projectdiscovery/shuffledns/cmd/shuffledns
-echo"done"
+echo "done"
 
 #install httpx
-echo"installing httpx"
+echo "installing httpx"
 go get -v github.com/projectdiscovery/httpx/cmd/httpx
-echo"done"
+echo "done"
 
 #install aquatone
-echo"installing aquatone"
+echo "installing aquatone"
+mkdir ~/tools/aquatone
+cd ~/tools/aquatone
 wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
-mkdir aquatone
 mv aquatone_linux_amd64_1.7.0.zip ~/tools/aquatone
-unzip aquatone_linux_amd64_1.7.0.zip 
-sudo mv aquatone /usr/local/go/bin
-sudo rm -r aquatone_linux_amd64_1.7.0.zip
-sudo rm -r ~/tools/aquatone
+unzip ~/tools/aquatone/aquatone_linux_amd64_1.7.0.zip 
+sudo cp -r ~/tools/aquatone/aquatone /usr/bin/
+sudo rm -r ~/tools/aquatone/aquatone_linux_amd64_1.7.0.zip
+echo "done"
 
 #install nuclei
-echo"installing nuclei"
+echo "installing nuclei"
 go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei 
-echo"done"
+echo "done"
 
 #install waybackurls
-echo"installing waybackurls"
+echo "installing waybackurls"
 go get github.com/tomnomnom/waybackurls
-echo"done"
+echo "done"
 
 #install gf and gf patterns
 echo "installing gf & gf patterns"
@@ -113,4 +95,4 @@ sudo cp -r $GOPATH/src/github.com/tomnomnom/gf/examples/*.json ~/.gf
 git clone https://github.com/1ndianl33t/Gf-Patterns
 mv ~/tools/Gf-Patterns/*.json ~/.gf
 sudo rm -r ~/tools/Gf-Patterns
-
+echo "done"
