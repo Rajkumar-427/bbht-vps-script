@@ -56,7 +56,6 @@ cd ~/tools
 
 # install subfinder
 echo "installing subfinder"
-GO111MODULE=on
 go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
 echo"done"
 
@@ -67,7 +66,6 @@ echo"done"
 
 # install amass
 echo"installing amass"
-GO111MODULE=on 
 go get -v github.com/OWASP/Amass/v3/...
 echo"done"
 
@@ -78,13 +76,11 @@ echo"done"
 
 # install shuffledns
 echo"installing shuffledns"
-GO111MODULE=on 
 go get -v github.com/projectdiscovery/shuffledns/cmd/shuffledns
 echo"done"
 
 #install httpx
 echo"installing httpx"
-GO111MODULE=on 
 go get -v github.com/projectdiscovery/httpx/cmd/httpx
 echo"done"
 
@@ -100,7 +96,6 @@ sudo rm -r ~/tools/aquatone
 
 #install nuclei
 echo"installing nuclei"
-GO111MODULE=on 
 go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei 
 echo"done"
 
