@@ -1,5 +1,15 @@
 #!/bin/bash
 
+
+echo "__________             __ __                                " 
+echo "\______   \_____      |__|  | ____ __  _____ _____ _______  "
+echo " |       _/\__  \     |  |  |/ /  |  \/     \\__  \\_  __ \ "
+echo " |    |   \ / __ \_   |  |    <|  |  /  Y Y  \/ __ \|  | \/ "
+echo " |____|_  /(____  /\__|  |__|_ \____/|__|_|  (____  /__|    "
+echo "        \/      \/\______|    \/           \/     \/        "
+
+#inspired by lazyrecon 
+
 sudo apt-get -y update 
 sudo apt-get -y upgrade 
 
@@ -96,3 +106,69 @@ git clone https://github.com/1ndianl33t/Gf-Patterns
 mv ~/tools/Gf-Patterns/*.json ~/.gf
 sudo rm -r ~/tools/Gf-Patterns
 echo "done"
+
+#install hacks
+echo "installing tomnomnom hacks"
+git clone https://github.com/tomnomnom/hacks.git
+echo "done"
+
+#install gau
+echo "installing gau"
+go get -u -v github.com/lc/gau
+echo "done"
+
+#install ffuf
+echo "installing ffuf"
+go get -u github.com/ffuf/ffuf
+echo "done"
+
+#install dirsearch
+echo "installing dirsearch"
+cd ~/tools
+git clone https://github.com/maurosoria/dirsearch.git
+chmod +x dirsearch.py
+pip3 install -r requirements.txt
+echo "done"
+
+#install relative-url-extractor
+echo "installing relative-url-extractor"
+cd ~/tools
+git clone https://github.com/jobertabma/relative-url-extractor.git
+chmod +x extract.rb 
+echo "done"
+
+#install linkfinder
+echo "installing linkfinder"
+cd ~/tools/
+git clone https://github.com/GerbenJavado/LinkFinder.git
+cd ~/tools/LinkFinder
+pip3 install -r requirements.txt
+
+
+#install secretfinder
+echo "installing secretfinder"
+git clone https://github.com/m4ll0k/SecretFinder.git secretfinder
+cd ~/tools/Secretfinder
+pip3 install -r requirements.txt
+
+#install massdns
+echo "installing massdns"
+cd ~/tools
+git clone https://github.com/blechschmidt/massdns.git
+cp -r ~/tools/massdns/lists/resolvers.txt ~/resolvers.txt
+echo "done"
+
+#install seclists
+echo "installing seclists"
+cd ~/tools
+git clone https://github.com/danielmiessler/SecLists.git
+sudo cp -r  ~/tools/SecLists  ~/usr/share/
+echo "done"
+
+#install chromium
+echo "installing chromium"
+cd ~/tools
+git clone https://github.com/scheib/chromium-latest-linux.git
+cd ~/tools/chromium-latest-linux/
+sudo ./run.sh
+sudo ./update-and-run.sh
